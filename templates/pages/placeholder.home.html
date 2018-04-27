@@ -1,0 +1,14 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>CASCIC Hed-kount</h1>
+</div>
+<p class="lead">Welcome to Hed-kount! Check out the different feeds to all the Caltech Dining establishments to check out how busy it is!</p>
+<div class="cam_link"><a href="{{ url_for('static', filename='img/doge.jpg') }}" class="btn btn-primary">Chandler sushi side</a></div>
+<div class="cam_link"><a href="{{ url_for('static', filename='img/doge.jpg') }}" class="btn btn-primary">Chandler grill side</a></div>
+<div class="cam_link"><a href="{{ url_for('static', filename='img/doge.jpg') }}" class="btn btn-primary">Red Door</a></div>
+<div class="cam_link"><a href="{{ url_for('static', filename='img/doge.jpg') }}" class="btn btn-primary">Broad Cafe</a></div>
+
+{% endblock %}
