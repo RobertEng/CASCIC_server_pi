@@ -13,8 +13,6 @@ from werkzeug.utils import secure_filename
 
 is_heroku = os.environ.get('IS_HEROKU', None)
 
-print(is_heroku)
-
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
