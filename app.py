@@ -4,23 +4,33 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 from flask import send_from_directory
+from flask import flash
 # from flask.ext.sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
 # from forms import *
 import os
 from werkzeug.utils import secure_filename
-from config import CAM_KEY
+
+is_heroku = os.environ.get('IS_HEROKU', None)
 
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
 
 app = Flask(__name__)
-app.config.from_object('config')
+
+if is_heroku is None:
+    from config import CAM_KEY
+    app.config.from_object('config')
+    UPLOAD_FOLDER = './static/img'
+else:
+    CAM_KEY = os.environ['CAM_KEY']
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    UPLOAD_FOLDER = os.path.join(basedir, 'static/img')
 #db = SQLAlchemy(app)
 
-UPLOAD_FOLDER = './static/img'
+
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
