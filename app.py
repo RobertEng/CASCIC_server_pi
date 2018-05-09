@@ -3,7 +3,8 @@
 #----------------------------------------------------------------------------#
 
 from flask import Flask, render_template, request, redirect, url_for
-from flask import send_from_directory, flash
+from flask import send_from_directory
+from flask import flash
 # from flask.ext.sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
