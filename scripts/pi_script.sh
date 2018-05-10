@@ -2,6 +2,9 @@
 # go to cascic directory
 cd ~/cascic
 
+# remove images if they exist
+rm -f images/$OUTPUT_FILENAME images/pred_$OUTPUT_FILENAME
+
 # take an image
 raspistill -o images/$OUTPUT_FILENAME
 
