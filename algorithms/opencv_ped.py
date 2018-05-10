@@ -56,4 +56,6 @@ for imagePath in paths.list_images(args["images"]):
     # show the output images
     cv2.imshow("Before NMS", orig)
     cv2.imshow("After NMS", image)
+    # environment variable defined on each pi
+    cv2.imswrite(os.environ['OUTPUT_FILENAME'] + "_pred.jpg", image)
     cv2.waitKey(0)
