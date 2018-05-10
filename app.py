@@ -68,6 +68,10 @@ def home():
 def about():
     return render_template('pages/placeholder.about.html')
 
+@app.route('/chandleruno')
+def chandleruno():
+    return render_template('pages/chandleruno.html')
+
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
