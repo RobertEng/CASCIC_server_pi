@@ -28,12 +28,12 @@ for imagePath in paths.list_images(args["images"]):
     # load the image and resize it to (1) reduce detection time
     # and (2) improve detection accuracy
     image = cv2.imread(imagePath)
-    image = imutils.resize(image, width=900)
+    image = imutils.resize(image, width=300)
     orig = image.copy()
 
     # detect people in the image
     (rects, weights) = hog.detectMultiScale(image, winStride=(4, 4),
-        padding=(8, 8), scale=1.01)
+        padding=(8, 8), scale=1.08)
 
     # draw the original bounding boxes
     for (x, y, w, h) in rects:
