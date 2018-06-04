@@ -6,7 +6,7 @@ import imutils
 from imutils.object_detection import non_max_suppression
 
 
-def run_cascade_algorithm(paths):
+def run_cascade_algorithm(img_paths):
     # body_cascade = cv2.CascadeClassifier('haarcascade_fullbody.xml')
     # body_cascade = cv2.CascadeClassifier('haarcascade_lowerbody.xml')
     # body_cascade = cv2.CascadeClassifier('haarcascade_upperbody.xml')
@@ -15,7 +15,7 @@ def run_cascade_algorithm(paths):
     body_cascade.load('cascades/rand_cascade_people.xml')
 
     # loop over the image paths
-    for imagePath in paths.list_images(paths):
+    for imagePath in paths.list_images(img_paths):
         # load the image and resize it to (1) reduce detection time
         # and (2) improve detection accuracy
         image = cv2.imread(imagePath)
@@ -30,6 +30,7 @@ def run_cascade_algorithm(paths):
 
         cv2.imshow('img', image)
         cv2.waitKey(0)
+
 
 if __name__ == "__main__":
     # construct the argument parse and parse the arguments
