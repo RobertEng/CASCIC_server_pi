@@ -71,7 +71,7 @@ def about():
 
 @app.route('/chandleruno')
 def chandleruno():
-    data = open("chanderuno.dat", "rb")
+    data = open("chandleruno.dat", "rb")
     # assuming one line for now in the file
     num_people = int(data.read())
 
