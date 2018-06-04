@@ -28,12 +28,12 @@ for imagePath in paths.list_images(args["images"]):
     # load the image and resize it to (1) reduce detection time
     # and (2) improve detection accuracy
     image = cv2.imread(imagePath)
-    image = imutils.resize(image, width=300)
+    image = imutils.resize(image, width=800)
     orig = image.copy()
 
     # detect people in the image
     (rects, weights) = hog.detectMultiScale(image, winStride=(4, 4),
-        padding=(8, 8), scale=1.08)
+        padding=(8, 8), scale=1.01)
 
     # draw the original bounding boxes
     for (x, y, w, h) in rects:
@@ -58,5 +58,5 @@ for imagePath in paths.list_images(args["images"]):
     cv2.imshow("Before NMS", orig)
     cv2.imshow("After NMS", image)
     # environment variable defined on each pi
-    cv2.imwrite(os.getcwd() + "/" + args["images"] + "/pred_" + os.environ['OUTPUT_FILENAME'], image)
+    # cv2.imwrite(os.getcwd() + "/" + args["images"] + "/pred_" + os.environ['OUTPUT_FILENAME'], image)
     cv2.waitKey(0)
