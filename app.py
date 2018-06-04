@@ -11,6 +11,7 @@ from logging import Formatter, FileHandler
 # from forms import *
 import os
 from werkzeug.utils import secure_filename
+from algorithms.opencv_cascade import run_cascade_algorithm
 
 is_heroku = os.environ.get('IS_HEROKU', None)
 
@@ -75,6 +76,7 @@ def chandleruno():
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
+
         # Check if the post request has the SECRET KEYY OOOO SPOOOKY
         if 'cam_key' not in request.args or request.args['cam_key'] != CAM_KEY:
             flash("You don't have the key")
@@ -91,7 +93,12 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+
+            file_path = app.config['UPLOAD_FOLDER']
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            num_people = run_cascade_algorithm(file_path)
+
             return redirect(url_for('upload_file',
                                     filename=filename))
     return '''

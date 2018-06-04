@@ -16,6 +16,7 @@ def run_cascade_algorithm(img_paths):
 
     # loop over the image paths
     num_people = []
+
     for imagePath in paths.list_images(img_paths):
         # load the image and resize it to (1) reduce detection time
         # and (2) improve detection accuracy
@@ -31,6 +32,7 @@ def run_cascade_algorithm(img_paths):
 
         num_people.append(len(people))
         cv2.imwrite('/'.join(imagePath.split('/')[:-1]) + '/pred_' + imagePath.split('/')[-1], image)
+        
         # cv2.imshow('img', image)
         # cv2.waitKey(0)
     return num_people
