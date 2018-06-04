@@ -1,4 +1,5 @@
 venv/
 config.py
-
+.DS_Store
+static/img/
 *.pyc
