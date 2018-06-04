@@ -5,4 +5,7 @@ flask
 gunicorn
 pip
 numpy
+cv2
+imutils
+argparse
 
