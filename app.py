@@ -71,7 +71,7 @@ def about():
 
 @app.route('/chandleruno')
 def chandleruno():
-    data = open("chandleruno.dat", "rb")
+    data = open("chandleruno.dat", "r")
     # assuming one line for now in the file
     num_people = int(data.read())
 
@@ -104,7 +104,7 @@ def upload_file():
             num_people = run_cascade_algorithm(file_path)
 
             # add the data to the file
-            data_file = open("chandleruno.dat", "wb+")
+            data_file = open("chandleruno.dat", "w+")
             data_file.write(str(num_people[0]))
             data_file.close()
 
