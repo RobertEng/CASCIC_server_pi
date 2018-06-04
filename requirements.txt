@@ -5,7 +5,7 @@ flask
 gunicorn
 pip
 numpy
-opencv-python
+opencv-python==3.3.0.9
 imutils
 argparse
 
