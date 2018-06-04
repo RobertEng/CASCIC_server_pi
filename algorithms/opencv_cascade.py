@@ -15,6 +15,7 @@ def run_cascade_algorithm(img_paths):
     body_cascade.load('cascades/rand_cascade_people.xml')
 
     # loop over the image paths
+    num_people = []
     for imagePath in paths.list_images(img_paths):
         # load the image and resize it to (1) reduce detection time
         # and (2) improve detection accuracy
@@ -28,8 +29,11 @@ def run_cascade_algorithm(img_paths):
         for (x,y,w,h) in people:
             cv2.rectangle(image, (x,y), (x + w, y + h), (255,255,0), 2)
 
-        cv2.imshow('img', image)
-        cv2.waitKey(0)
+        num_people.append(len(people))
+        cv2.imwrite('/'.join(imagePath.split('/')[:-1]) + '/pred_' + imagePath.split('/')[-1], image)
+        # cv2.imshow('img', image)
+        # cv2.waitKey(0)
+    return num_people
 
 
 if __name__ == "__main__":
