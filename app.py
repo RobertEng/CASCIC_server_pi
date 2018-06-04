@@ -71,7 +71,11 @@ def about():
 
 @app.route('/chandleruno')
 def chandleruno():
-    return render_template('pages/chandleruno.html')
+    data = open("chanderuno.dat", "rb")
+    # assuming one line for now in the file
+    num_people = int(data.read())
+
+    return render_template('pages/chandleruno.html', num_people=num_people)
 
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
@@ -98,6 +102,11 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             num_people = run_cascade_algorithm(file_path)
+
+            # add the data to the file
+            data_file = open("chandleruno.dat", "wb+")
+            data_file.write(str(num_people[0]))
+            data_file.close()
 
             return redirect(url_for('upload_file',
                                     filename=filename))
