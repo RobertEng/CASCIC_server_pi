@@ -1,1 +1,6 @@
-# CASCIC_server_pi
+# hedkount - CS81 CASCIC Project
+
+**Proposal:** The lines at Chandler seem to be getting longer and longer with each passing week. The last thing you want to see as you enter the cafe, seeking nourishment, is a horde of hungry Techers attempting to do the same. That’s why we’d like to provide a way for everyone on campus to check how long the lines are at Chandler. To do this, we would like to install six Raspberry Pis with cameras above the various stations around Chandler. We plan to use computer vision algorithms from OpenCV to count the number of people at each station, updated every couple minutes, to estimate the number of people waiting in line and report these numbers on a caltech.edu web page. Pending successful funding and device installation, we could also store the data that we report and forecast wait times for each day.
+
+## Deployment
+We run a Python Flask server deployed on heroku. The Pis with cameras periodically take pictures with a cron job and send it via post request to the server. The server processes the image and produces a number which is displayed on the website.
